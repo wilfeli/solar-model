@@ -1,0 +1,1 @@
+{"type1": {"scheme": {"EParamTypes::SEIInteractionType": [0.2, 0.2, 0.2], "EParamTypes::SEIDecisionProjectTotalTime": [0.5], "EParamTypes::SEIDecisionEstimatedSavings": [0.7], "EParamTypes::SEIWarranty": [0.2, 0.2, 0.2], "EParamTypes::HODecisionSEIUtilityNone": [1.0], "EParamTypes::SEIEquipmentType": [0.1, 0.1, 0.1], "EParamTypes::SEIRating": [0.3, 0.3, 0.3]}, "frequency": 1.0}}
