@@ -94,9 +94,10 @@ class Settings:
     def __init__(self, **kwargs):
         self.p_electricity_d = 0.15
         self.p_electricity_s = 0.15
+        self.n_hs = 100
         self.house_to_roof_size = 0.5 * 0.25
         self.demand_share = 1.0
-        self.solar_irradiation = 5.0
+        self.solar_irradiation = 6.0
         self.dc_to_ac = 0.8
         self.tax_incentive = 0.3
         self.interest_rate = 0.06
@@ -161,7 +162,7 @@ class Model:
         #need distribution of homeowners
         #create homeowners
         self.hs = []
-        for i in range(500):
+        for i in range(settings.n_hs):
             roof_size = settings.house_to_roof_size * df_full.values[i][0] 
             el_d = df_full.values[i][5]/NUMBER_DAYS_IN_YEAR * NUMBER_DAYS_IN_MONTH
             el_bill = el_d * settings.p_electricity_d
@@ -331,13 +332,13 @@ class Homeowner:
         #generate error
         if (res + error > settings.THETA_SEI['EParamTypes::HOSEIDecisionUtilityNone']):
             res = self.utility_system(system)
-            print(res)
-            print(system.total_net_savings)
+#            print(res)
+#            print(system.total_net_savings)
             error = -math.log(1 / np.random.uniform() - 1)
-            print('accept_sei')
+#            print('accept_sei')
             if (res + error > settings.THETA_DESIGN['EParamTypes::HODesignDecisionUtilityNone']):
                 install_FLAG = 1
-                print(install_FLAG)
+#                print(install_FLAG)
 
             
             
@@ -378,7 +379,8 @@ class SEI:
             res, system = self.offer_system(self.model.hs[h_index]) 
 
             if res:
-                self.model.systems.append(copy.deepcopy(system))
+#                self.model.systems.append(copy.deepcopy(system))
+                 self.model.systems.append(1.0)  
                 
 
     '''
